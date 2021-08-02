@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import TeamProvider from './src/contexts/Team';
+import TeamProvider from './src/contexts/teamContext';
 import { store } from './src/state';
 
 import Home from './src/screens/home';

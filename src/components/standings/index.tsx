@@ -12,8 +12,8 @@ import SelectInput from '../selectInput';
 import { useEffect } from 'react';
 import { TeamContext } from '../../contexts';
 import { useState } from 'react';
-import { TeamInformationType } from '../../contexts/team/types';
-import { initialStateTeamInformation } from '../../contexts/Team';
+import { TeamInformationType } from '../../contexts/teamContext/types';
+import { initialStateTeamInformation } from '../../contexts/teamContext';
 
 const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
   navigation,
@@ -21,16 +21,18 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
   const leagueStandings: LeagueType = useSelector(
     (state: ApplicationState) => state.league
   );
-  // const [teamInformation, setTeamInformation] = useState<TeamInformationType>(
-  //   initialStateTeamInformation
-  // );
+  const [teamInformation, setTeamInformation] = useState<TeamInformationType>(
+    initialStateTeamInformation
+  );
   const { flag, country, standings: std } = leagueStandings;
   const { setTeamInfo, teamInfo } = useContext(TeamContext);
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
-      const teamInformation: TeamInformationType = await getTeamInformation('');
+      const teamInformation: TeamInformationType = await getTeamInformation(
+        '2015'
+      );
       console.log('Tema Information: ', teamInformation);
       setTeamInfo(teamInformation);
     })();
@@ -38,6 +40,7 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
 
   useEffect(() => {
     console.log('Foi alterada: ', teamInfo);
+    setTeamInfo(teamInfo);
   }, [teamInfo]);
 
   return country ? (
@@ -77,7 +80,7 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
           <TouchableOpacity
             key={`league-standings-${index}`}
             onPress={() => {
-              // setTeam({ ...teamInformation });
+              setTeamInfo(teamInformation);
               navigation.navigate('Team');
             }}
           >

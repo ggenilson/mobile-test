@@ -1,1 +1,1 @@
-export { TeamContext, default as Team } from './team';
+export { TeamContext, default as Team } from './teamContext';

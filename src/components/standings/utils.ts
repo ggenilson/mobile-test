@@ -1,15 +1,15 @@
 import Api from '../../services/api';
 
-import { initialStateTeamInformation } from '../../contexts/team';
+import { initialStateTeamInformation } from '../../contexts/teamContext';
+import { TeamInformationType } from '../../contexts/teamContext/types';
 import { orderLeaguesStandings } from '../../screens/home/utils';
 import { LeagueType, OrderType } from '../../screens/home/types';
-import { TeamInformationType } from '../../contexts/team/types';
 
 export const getTeamInformation = async (
   team: string
 ): Promise<TeamInformationType> => {
   try {
-    const res = await Api.get('/teams');
+    const res = await Api.get(`/teams?id=${team}`);
 
     if (res) {
       const { response } = res?.data;
