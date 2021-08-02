@@ -1,10 +1,6 @@
+import { OrderType } from '../../@types/global';
 import Api from '../../services/api';
-import {
-  LeaguesSeasonsType,
-  LeaguesType,
-  LeagueType,
-  OrderType,
-} from './types';
+import { LeaguesSeasonsType, LeaguesType, LeagueType } from './types';
 
 export const getStandings = async (
   league: string,

@@ -10,3 +10,11 @@ export type RouteStackParamList<T extends keyof RouteParamList> = {
   navigation: StackNavigationProp<RouteParamList, T>;
   route?: RouteProp<RouteParamList, T>;
 };
+
+export enum OrderType {
+  POINTS = 'points',
+  RANK = 'rank',
+  DRAW = 'draw',
+  LOSE = 'lose',
+  WIN = 'win',
+}

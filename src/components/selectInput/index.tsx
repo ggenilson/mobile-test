@@ -8,25 +8,19 @@ const SelectInput: FC<SelectInputType> = ({
   placeholder,
   onValueChange = () => {},
   ...rest
-}) => {
-  return (
-    <Picker
-      {...rest}
-      style={style}
-      onValueChange={(itemValue, itemIndex) =>
-        onValueChange(itemValue, itemIndex - 1)
-      }
-    >
-      <Picker.Item label={placeholder} value="" />
-      {data.map(({ value, label }, index) => (
-        <Picker.Item
-          key={`select-input-${index}`}
-          label={label}
-          value={value}
-        />
-      ))}
-    </Picker>
-  );
-};
+}) => (
+  <Picker
+    {...rest}
+    style={style}
+    onValueChange={(itemValue, itemIndex) =>
+      onValueChange(itemValue, itemIndex - 1)
+    }
+  >
+    <Picker.Item label={placeholder} value="" />
+    {data.map(({ value, label }, index) => (
+      <Picker.Item key={`select-input-${index}`} label={label} value={value} />
+    ))}
+  </Picker>
+);
 
 export default SelectInput;

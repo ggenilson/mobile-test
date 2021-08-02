@@ -3,7 +3,8 @@ import Api from '../../services/api';
 import { initialStateTeamInformation } from '../../contexts/teamContext';
 import { TeamInformationType } from '../../contexts/teamContext/types';
 import { orderLeaguesStandings } from '../../screens/home/utils';
-import { LeagueType, OrderType } from '../../screens/home/types';
+import { LeagueType } from '../../screens/home/types';
+import { OrderType } from '../../@types/global';
 
 export const getTeamInformation = async (
   team: string

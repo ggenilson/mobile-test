@@ -39,11 +39,3 @@ type TypeLeagueType = {
 export type LeaguesType = {
   league: TypeLeagueType;
 };
-
-export enum OrderType {
-  POINTS = 'points',
-  RANK = 'rank',
-  DRAW = 'draw',
-  LOSE = 'lose',
-  WIN = 'win',
-}
