@@ -1,11 +1,11 @@
 import { StyleProp, TextStyle } from 'react-native';
 
+type ItemValue = string | number;
+
 export type DataType = {
   label: string;
-  value: string | number;
+  value: ItemValue;
 };
-
-type ItemValue = string | number;
 
 export type SelectInputType = {
   data: DataType[];
