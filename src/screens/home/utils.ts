@@ -11,7 +11,9 @@ export const getStandings = async (
   season: string
 ): Promise<LeagueType> => {
   try {
-    const res = await Api.get('/standings');
+    const res = await Api.get(`/standings?league=${league}&season=${season}`);
+
+    console.log('Trouxe: ', res);
 
     if (res) {
       const { response } = res?.data;

@@ -12,6 +12,7 @@ export const TeamStyle = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
+    fontSize: 14,
     color: 'white',
   },
 });

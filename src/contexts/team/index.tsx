@@ -2,7 +2,7 @@ import React, { FC, useState, createContext } from 'react';
 import { propContextDefaultValues } from './types';
 import { TeamInformationType } from './types';
 
-export const initialStateTeamInformation: TeamInformationType = {
+export const initialStateTeamInformation = {
   team: { name: '', country: '', founded: 0, logo: '' },
   venue: { name: '', adress: '', city: '', capacity: 0 },
 };
