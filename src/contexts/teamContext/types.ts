@@ -1,4 +1,4 @@
-export type propContextDefaultValues = {
+export type ContextDefaultValuesType = {
   teamInfo: TeamInformationType;
   setTeamInfo: (val: TeamInformationType) => void;
 };

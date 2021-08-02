@@ -1,5 +1,5 @@
 import React, { FC, useState, createContext } from 'react';
-import { propContextDefaultValues } from './types';
+import { ContextDefaultValuesType } from './types';
 import { TeamInformationType } from './types';
 
 export const initialStateTeamInformation = {
@@ -7,19 +7,19 @@ export const initialStateTeamInformation = {
   venue: { name: '', address: '', city: '', capacity: 0 },
 };
 
-const contexDefaultValues: propContextDefaultValues = {
+const contextDefaultValues: ContextDefaultValuesType = {
   teamInfo: initialStateTeamInformation,
   setTeamInfo: () => {},
 };
 
 export const TeamContext =
-  createContext<propContextDefaultValues>(contexDefaultValues);
+  createContext<ContextDefaultValuesType>(contextDefaultValues);
 
 const TeamProvider: FC = ({ children }) => {
-  const [teamInfo, setT] = useState<TeamInformationType>(
-    contexDefaultValues.teamInfo
+  const [teamInfo, setTeam] = useState<TeamInformationType>(
+    contextDefaultValues.teamInfo
   );
-  const setTeamInfo = (value: TeamInformationType) => setT(value);
+  const setTeamInfo = (value: TeamInformationType) => setTeam(value);
 
   return (
     <TeamContext.Provider
