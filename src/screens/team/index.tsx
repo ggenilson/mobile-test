@@ -12,7 +12,7 @@ const Team: FC<RouteStackParamList<'Team'>> = ({ navigation }) => {
 
   const {
     team: { name, country, founded, logo },
-    venue: { name: venueName, adress, city, capacity },
+    venue: { name: venueName, address, city, capacity },
   } = teamInfo;
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Team: FC<RouteStackParamList<'Team'>> = ({ navigation }) => {
 
           <View style={StandingsStyle.item}>
             <Text style={StandingsStyle.win}>Venue Name: {venueName}</Text>
-            <Text style={StandingsStyle.lose}>Adress: {adress}</Text>
+            <Text style={StandingsStyle.lose}>Adress: {address}</Text>
             <Text style={StandingsStyle.other}>City: {city}</Text>
             <Text style={StandingsStyle.rank}>Capacity: {capacity}</Text>
           </View>

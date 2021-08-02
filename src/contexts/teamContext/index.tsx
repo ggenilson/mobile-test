@@ -4,7 +4,7 @@ import { TeamInformationType } from './types';
 
 export const initialStateTeamInformation = {
   team: { name: '', country: '', founded: 0, logo: '' },
-  venue: { name: '', adress: '', city: '', capacity: 0 },
+  venue: { name: '', address: '', city: '', capacity: 0 },
 };
 
 const contexDefaultValues: propContextDefaultValues = {

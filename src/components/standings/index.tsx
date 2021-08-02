@@ -2,18 +2,16 @@ import React, { FC, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 
+import { filterTypes, handleValueChange, getTeamInformation } from './utils';
+import { TeamInformationType } from '../../contexts/teamContext/types';
 import { ApplicationState, saveStandings } from '../../state';
 import { RouteStackParamList } from '../../@types/global';
-import { filterTypes, handleValueChange, getTeamInformation } from './utils';
 import { HomeStyle } from '../../screens/home/styles';
 import { LeagueType } from '../../screens/home/types';
+import { TeamContext } from '../../contexts';
 import { StandingsStyle } from './styles';
 import SelectInput from '../selectInput';
 import { useEffect } from 'react';
-import { TeamContext } from '../../contexts';
-import { useState } from 'react';
-import { TeamInformationType } from '../../contexts/teamContext/types';
-import { initialStateTeamInformation } from '../../contexts/teamContext';
 
 const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
   navigation,
@@ -21,22 +19,9 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
   const leagueStandings: LeagueType = useSelector(
     (state: ApplicationState) => state.league
   );
-  const [teamInformation, setTeamInformation] = useState<TeamInformationType>(
-    initialStateTeamInformation
-  );
   const { flag, country, standings: std } = leagueStandings;
   const { setTeamInfo, teamInfo } = useContext(TeamContext);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      const teamInformation: TeamInformationType = await getTeamInformation(
-        '2015'
-      );
-      console.log('Tema Information: ', teamInformation);
-      setTeamInfo(teamInformation);
-    })();
-  }, []);
 
   useEffect(() => {
     console.log('Foi alterada: ', teamInfo);
@@ -72,15 +57,19 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
           {
             points,
             rank,
-            team: { name, logo },
+            team: { id, name, logo },
             all: { win, lose, draw, played },
           },
           index
         ) => (
           <TouchableOpacity
             key={`league-standings-${index}`}
-            onPress={() => {
+            onPress={async () => {
+              const teamInformation: TeamInformationType =
+                await getTeamInformation(id.toString());
+
               setTeamInfo(teamInformation);
+
               navigation.navigate('Team');
             }}
           >

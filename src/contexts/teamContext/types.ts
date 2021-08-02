@@ -12,7 +12,7 @@ type TeamType = {
 
 type VenueType = {
   name: string;
-  adress: string;
+  address: string;
   city: string;
   capacity: number;
 };
