@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
-import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { View } from 'react-native';
 
 import RenderLeagueStanding from '../../components/standings';
 import Header from '../../components/header';
@@ -13,6 +13,7 @@ import { LeagueType } from './types';
 import { HomeStyle } from './styles';
 
 import { saveStandings } from '../../state';
+import { Picker } from '@react-native-community/picker';
 
 interface IValuesSearch {
   league: string;

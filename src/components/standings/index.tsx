@@ -1,4 +1,5 @@
 import React, { FC, useContext } from 'react';
+import { v4 as uuid } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 
@@ -61,18 +62,15 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
         <Text style={StandingsStyle.headerCountryText}>{country}</Text>
       </View>
 
-      {std.map(
-        (
-          {
-            points,
-            rank,
-            team: { id, name, logo },
-            all: { win, lose, draw, played },
-          },
-          index
-        ) => (
+      {std[0].map(
+        ({
+          points,
+          rank,
+          team: { id, name, logo },
+          all: { win, lose, draw, played },
+        }) => (
           <TouchableOpacity
-            key={`league-standings-${index}`}
+            key={uuid()}
             onPress={async () => {
               handlePress(id);
             }}

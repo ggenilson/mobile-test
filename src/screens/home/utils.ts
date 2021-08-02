@@ -9,8 +9,6 @@ export const getStandings = async (
   try {
     const res = await Api.get(`/standings?league=${league}&season=${season}`);
 
-    console.log('Trouxe: ', res);
-
     if (res) {
       const { response } = res?.data;
       const { league } = response[0];
@@ -65,7 +63,7 @@ export const orderLeaguesStandings = (
 ) => {
   const { standings } = leagueStanding;
 
-  standings.sort((val, valCompare) => {
+  standings[0].sort((val, valCompare) => {
     const {
       all: { lose, win, draw },
       points,
@@ -105,21 +103,23 @@ export const initialState: LeagueType = {
   logo: '',
   season: 0,
   standings: [
-    {
-      team: {
-        id: 0,
-        logo: '',
-        name: '',
+    [
+      {
+        team: {
+          id: 0,
+          logo: '',
+          name: '',
+        },
+        rank: 0,
+        group: '',
+        points: 0,
+        all: {
+          lose: 0,
+          played: 0,
+          win: 0,
+          draw: 0,
+        },
       },
-      rank: 0,
-      group: '',
-      points: 0,
-      all: {
-        lose: 0,
-        played: 0,
-        win: 0,
-        draw: 0,
-      },
-    },
+    ],
   ],
 };

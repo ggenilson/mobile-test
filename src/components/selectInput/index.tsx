@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { Picker } from '@react-native-community/picker';
+import { v4 as uuid } from 'uuid';
 import { SelectInputType } from './types';
+import { Picker } from '@react-native-community/picker';
 
 const SelectInput: FC<SelectInputType> = ({
   data,
@@ -17,8 +18,8 @@ const SelectInput: FC<SelectInputType> = ({
     }
   >
     <Picker.Item label={placeholder} value="" />
-    {data.map(({ value, label }, index) => (
-      <Picker.Item key={`select-input-${index}`} label={label} value={value} />
+    {data.map(({ value, label }) => (
+      <Picker.Item key={uuid()} label={label} value={value} />
     ))}
   </Picker>
 );
