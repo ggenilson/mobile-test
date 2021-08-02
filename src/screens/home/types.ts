@@ -26,7 +26,7 @@ export type LeagueType = {
   flag: string;
   logo: string;
   season: number;
-  standings: Array<StandingsType[]>;
+  standings: StandingsType[];
 };
 
 export type LeaguesSeasonsType = string[];

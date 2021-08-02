@@ -23,8 +23,17 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
   const { setTeamInfo, teamInfo } = useContext(TeamContext);
   const dispatch = useDispatch();
 
+  const handlePress = async (id: number) => {
+    const teamInformation: TeamInformationType = await getTeamInformation(
+      id.toString()
+    );
+
+    setTeamInfo(teamInformation);
+
+    navigation.navigate('Team');
+  };
+
   useEffect(() => {
-    console.log('Foi alterada: ', teamInfo);
     setTeamInfo(teamInfo);
   }, [teamInfo]);
 
@@ -52,7 +61,7 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
         <Text style={StandingsStyle.headerCountryText}>{country}</Text>
       </View>
 
-      {std[0].map(
+      {std.map(
         (
           {
             points,
@@ -65,12 +74,7 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
           <TouchableOpacity
             key={`league-standings-${index}`}
             onPress={async () => {
-              const teamInformation: TeamInformationType =
-                await getTeamInformation(id.toString());
-
-              setTeamInfo(teamInformation);
-
-              navigation.navigate('Team');
+              handlePress(id);
             }}
           >
             <View style={StandingsStyle.standings}>

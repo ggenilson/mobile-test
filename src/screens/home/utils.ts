@@ -65,7 +65,7 @@ export const orderLeaguesStandings = (
 ) => {
   const { standings } = leagueStanding;
 
-  standings[0].sort((val, valCompare) => {
+  standings.sort((val, valCompare) => {
     const {
       all: { lose, win, draw },
       points,
@@ -105,23 +105,21 @@ export const initialState: LeagueType = {
   logo: '',
   season: 0,
   standings: [
-    [
-      {
-        team: {
-          id: 0,
-          logo: '',
-          name: '',
-        },
-        rank: 0,
-        group: '',
-        points: 0,
-        all: {
-          lose: 0,
-          played: 0,
-          win: 0,
-          draw: 0,
-        },
+    {
+      team: {
+        id: 0,
+        logo: '',
+        name: '',
       },
-    ],
+      rank: 0,
+      group: '',
+      points: 0,
+      all: {
+        lose: 0,
+        played: 0,
+        win: 0,
+        draw: 0,
+      },
+    },
   ],
 };

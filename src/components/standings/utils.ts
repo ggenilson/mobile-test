@@ -56,9 +56,9 @@ export const handleChangeText = (
   leagueStanding: LeagueType,
   search: string
 ) => {
-  const { standings } = leagueStanding;
+  let { standings } = leagueStanding;
 
-  standings[0] = standings[0].filter(({ team }) => team.name.indexOf(search));
+  standings = standings.filter(({ team }) => team.name.indexOf(search));
 
   return leagueStanding;
 };

@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import { StandingsStyle } from '../../components/standings/styles';
@@ -14,10 +14,6 @@ const Team: FC<RouteStackParamList<'Team'>> = ({ navigation }) => {
     team: { name, country, founded, logo },
     venue: { name: venueName, address, city, capacity },
   } = teamInfo;
-
-  useEffect(() => {
-    console.log('Team: ', teamInfo);
-  }, []);
 
   return (
     <View>
