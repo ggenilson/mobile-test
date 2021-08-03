@@ -20,6 +20,7 @@
     "react": "^17.0.2",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-gesture-handler": "^1.10.3",
     "react-native-screens": "^3.4.0",
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.4",
