@@ -19,13 +19,13 @@ const Team: FC<RouteStackParamList<'Team'>> = ({ navigation }) => {
     <View>
       <Header />
 
-      <View style={StandingsStyle.standings}>
+      <View style={[StandingsStyle.standings, StandingsStyle.standingsTeam]}>
         <View style={[StandingsStyle.item, StandingsStyle.itemHeader]}>
           <Image style={StandingsStyle.imgTeam} source={{ uri: logo }} />
           <Text style={StandingsStyle.itemHeaderText}>{name}</Text>
         </View>
 
-        <View style={StandingsStyle.secondItem}>
+        <View style={StandingsStyle.secondItemTeam}>
           <View style={StandingsStyle.item}>
             <Text style={StandingsStyle.other}>Country: {country}</Text>
             <Text style={StandingsStyle.other}>Founded: {founded}</Text>

@@ -1,5 +1,4 @@
 import React, { FC, useContext } from 'react';
-import { v4 as uuid } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 
@@ -43,6 +42,8 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
       <View>
         <View style={HomeStyle.searchContainer}>
           <SelectInput
+            id="filterby"
+            name="filterby"
             style={HomeStyle.searchItem}
             placeholder="Filter by"
             data={filterTypes}
@@ -68,9 +69,9 @@ const RenderLeagueStanding: FC<RouteStackParamList<'Home'>> = ({
           rank,
           team: { id, name, logo },
           all: { win, lose, draw, played },
-        }) => (
+        }, index) => (
           <TouchableOpacity
-            key={uuid()}
+            key={`standings-${index}`}
             onPress={async () => {
               handlePress(id);
             }}

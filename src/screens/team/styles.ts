@@ -2,10 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export const TeamStyle = StyleSheet.create({
   btn: {
-    marginLeft: '20px',
-    width: '80px',
+    marginLeft: 20,
+    width: 80,
     borderRadius: 5,
-    height: '40px',
+    height: 40,
     backgroundColor: 'rgb(29, 218, 29)',
     flexDirection: 'row',
     alignItems: 'center',
