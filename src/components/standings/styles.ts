@@ -8,15 +8,33 @@ export const StandingsStyle = StyleSheet.create({
   },
   standings: {
     flexDirection: 'column',
-    width: '100%',
-    boxShadow: '0 0 4px black',
-    marginBottom: '20px',
-    padding: '10px',
+    width: '90%',
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    marginBottom: 20,
+    padding: 10,
     backgroundColor: 'rgb(255, 255, 255)',
-    cursor: 'pointer',
+    borderRadius:15,
+    alignItems:'center',
+    justifyContent:'center',
+    alignSelf:'center',
+    
+    // cursor: 'pointer',
+  },
+  standingsTeam:{
+    width:'98%' ,
+    height: 190,
+    flexDirection:'column',
+    alignItems:'center'
   },
   item: {
-    marginRight: '20px',
+    marginRight: 20,
   },
   itemHeader: {
     flexDirection: 'row',
@@ -29,6 +47,10 @@ export const StandingsStyle = StyleSheet.create({
   },
   secondItem: {
     flexDirection: 'row',
+    margin: 'auto',
+  },
+  secondItemTeam: {
+   
     margin: 'auto',
   },
   win: {

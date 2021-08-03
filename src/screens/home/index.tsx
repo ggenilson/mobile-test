@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { View } from 'react-native';
+import { ScrollView ,View} from 'react-native';
 
 import RenderLeagueStanding from '../../components/standings';
 import Header from '../../components/header';
@@ -13,7 +13,7 @@ import { LeagueType } from './types';
 import { HomeStyle } from './styles';
 
 import { saveStandings } from '../../state';
-import { Picker } from '@react-native-community/picker';
+
 
 interface IValuesSearch {
   league: string;
@@ -33,8 +33,8 @@ const Home: FC<RouteStackParamList<'Home'>> = ({ navigation }) => {
   useEffect(() => {
     getLeaguesSeasons().then(res => {
       const seasons: DataType[] = res.map(val => ({
-        label: val || '',
-        value: val || '',
+        label: val.toString() || '',
+        value: val.toString() || '',
       }));
 
       setLeagueSeason(seasons);
@@ -68,11 +68,14 @@ const Home: FC<RouteStackParamList<'Home'>> = ({ navigation }) => {
   }, [valuesSearch]);
 
   return (
-    <View style={HomeStyle.container}>
+    <ScrollView style={HomeStyle.container}>
       <Header />
 
       <View style={HomeStyle.searchContainer}>
         <SelectInput
+          id="liga"
+          name="liga"
+          selectedValue="Genilson"
           style={HomeStyle.searchItem}
           placeholder="Liga"
           data={leagues}
@@ -82,8 +85,11 @@ const Home: FC<RouteStackParamList<'Home'>> = ({ navigation }) => {
         />
 
         <SelectInput
+          id="season"
+          name="season"
           style={HomeStyle.searchItem}
           placeholder="Season"
+          selectedValue="Genilson"
           data={leagueSeasons}
           onValueChange={itemValue =>
             setValuesSearch({ ...valuesSearch, season: itemValue.toString() })
@@ -92,7 +98,7 @@ const Home: FC<RouteStackParamList<'Home'>> = ({ navigation }) => {
       </View>
 
       {controlRender && <RenderLeagueStanding navigation={navigation} />}
-    </View>
+    </ScrollView>
   );
 };
 
